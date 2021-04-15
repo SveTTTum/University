@@ -5,7 +5,7 @@ public class Group extends Faculty{
 
     public Group() {
         super();
-        this.student = student;
+        this.student = new Student();
     }
 
     public Student getStudent() {

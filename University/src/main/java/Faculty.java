@@ -1,17 +1,17 @@
 public class Faculty {
         private String nameFaculty;
-        private String nameGroup;
+        private Group nameGroup;
 
-        public Faculty() {
-            this.nameFaculty = nameFaculty;
-            this.nameGroup = nameGroup;
-        }
+    public Faculty() {
+        this.nameFaculty = nameFaculty;
+        this.nameGroup = new Group();
+    }
 
     public String getNameFaculty() {
         return nameFaculty;
     }
 
-    public String getNameGroup() {
+    public Group getNameGroup() {
         return nameGroup;
     }
 
@@ -19,15 +19,7 @@ public class Faculty {
         this.nameFaculty = nameFaculty;
     }
 
-    public void setNameGroup(String nameGroup) {
+    public void setNameGroup(Group nameGroup) {
         this.nameGroup = nameGroup;
-    }
-
-    @Override
-    public String toString() {
-        return "Faculty{" +
-                "nameFaculty='" + nameFaculty + '\'' +
-                ", nameGroup='" + nameGroup + '\'' +
-                '}';
     }
 }
