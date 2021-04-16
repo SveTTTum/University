@@ -1,11 +1,11 @@
 import java.util.*;
 
 public class Diary {
-    private final int studentId;
+    private String nameStudent;
     private final Map<String, List<Integer>> diary = new HashMap<>();
 
-    Diary(int studentId) {
-        this.studentId = studentId;
+    Diary(String nameStudent) {
+        this.nameStudent = nameStudent;
     }
 
     void addSubject(String nameSubject) {
@@ -15,7 +15,9 @@ public class Diary {
     void addSubjectMark(String nameSubject, Integer [] marks) {
         addSubject(nameSubject);
         diary.get(nameSubject).addAll(Arrays.asList(marks));
+
     }
+
 
     long MiddleSubjectMarks(String nameSubject) {
         int sum = 0;
@@ -45,7 +47,7 @@ public class Diary {
         for (Map.Entry<String, List<Integer>> entry : diary.entrySet()) {
             stringBuilder.append(entry.getKey()).append(" - ").append(entry.getValue()).append("\n");
         }
-        return "Diary student" + studentId + ":" +
+        return "Diary " + nameStudent + ":" +
                 "\n" + stringBuilder.toString();
     }
 }

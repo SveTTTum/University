@@ -1,25 +1,22 @@
+import java.util.List;
+
 public class Faculty {
+
         private String nameFaculty;
-        private Group nameGroup;
+        private List<Group> groups;
 
-    public Faculty() {
-        this.nameFaculty = nameFaculty;
-        this.nameGroup = new Group();
-    }
+        public Faculty(String nameFaculty, List<Group> groups) {
+                this.nameFaculty = nameFaculty;
+                this.groups = groups;
+        }
 
-    public String getNameFaculty() {
-        return nameFaculty;
-    }
+        public String getNameFaculty() {
+                return nameFaculty;
+        }
 
-    public Group getNameGroup() {
-        return nameGroup;
-    }
+        public List<Group> getGroups() {
+                return groups;
+        }
 
-    public void setNameFaculty(String nameFaculty) {
-        this.nameFaculty = nameFaculty;
-    }
 
-    public void setNameGroup(Group nameGroup) {
-        this.nameGroup = nameGroup;
-    }
 }

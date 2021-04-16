@@ -1,25 +1,22 @@
+
 import java.util.ArrayList;
+import java.util.List;
 
-public class Group extends Faculty{
-    private Student student;
+public class Group {
+    private String nameGroup;
+    private List<Student> students;
 
-    public Group() {
-        super();
-        this.student = new Student();
+    public Group(String nameGroup, List<Student> students) {
+        this.nameGroup = nameGroup;
+        this.students = students;
     }
 
-    public Student getStudent() {
-        return student;
+    public String getNameGroup() {
+        return nameGroup;
     }
 
-    public void setStudent(Student student) {
-        this.student = student;
+    public List<Student> getStudents() {
+        return students;
     }
 
-    @Override
-    public String toString() {
-        return "Group{" +
-                "student=" + student +
-                '}';
-    }
 }
