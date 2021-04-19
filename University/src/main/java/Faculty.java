@@ -7,9 +7,8 @@ public class Faculty {
         private String nameFaculty;
         private List<Group> groups;
 
-        public Faculty(String nameFaculty, List<Group> groups) {
+        public Faculty(String nameFaculty) {
                 this.nameFaculty = nameFaculty;
-                this.groups = groups;
         }
 
         public String getNameFaculty() {
@@ -20,17 +19,24 @@ public class Faculty {
                 return groups;
         }
 
-        float getMiddleMarksForFaculty(Group group, String nameSubject) {
-                ArrayList<Integer> marks = new ArrayList<>();
-                marks.addAll(group.getMarksForGroup(nameSubject));
-
-                int sum = 0;
-                float counter = 0;
-                for(Integer mark : marks) {
-                        sum += mark;
-                        counter++;
-                }
-                return (float) sum / counter;
+        public void setGroups(List<Group> groups) {
+                this.groups = groups;
         }
 
+        float getMiddleMarksForFaculty(Group group, String nameSubject) {
+                if (nameFaculty.isEmpty()) {
+                        throw new NullPointerException("No Groups added\n");
+                } else {
+                        ArrayList<Integer> marks = new ArrayList<>();
+                        marks.addAll(group.getMarksForGroup(nameSubject));
+
+                        int sum = 0;
+                        float counter = 0;
+                        for (Integer mark : marks) {
+                                sum += mark;
+                                counter++;
+                        }
+                        return (float) sum / counter;
+                }
+        }
 }

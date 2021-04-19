@@ -28,17 +28,28 @@ public class Runner {
         System.out.println("Average score " + student1.getName() + " - " + student1.getDiary().MiddleMarks());
         //System.out.println("Average score at Math" + student2.getName() + " - " + student2.getDiary().MiddleSubjectMarks("Math"));
         //System.out.println(student2.getMarks("Informatics"));
-        Group groupA = new Group("A", Arrays.asList(student1, student2));
-        Group groupB = new Group("B", Arrays.asList(student3));
-        Group groupC = new Group("C", Arrays.asList(student4));
-
-        Faculty faculty1 = new Faculty("FPMI", Arrays.asList(groupA, groupB));
-        Faculty faculty2 = new Faculty("FIFO", Arrays.asList(groupC));
+//        Group groupA = new Group("A", Arrays.asList(student1, student2));
+//        Group groupB = new Group("B", Arrays.asList(student3));
+//        Group groupC = new Group("C", Arrays.asList(student4));
+        Group groupA = new Group("A");
+        Group groupB = new Group("B");
+        Group groupC = new Group("C");
+        groupA.setStudents(Arrays.asList(student1, student2));
+        groupB.setStudents(Arrays.asList(student3));
+        groupC.setStudents(Arrays.asList(student4));
+//        Faculty faculty1 = new Faculty("FPMI", Arrays.asList(groupA, groupB));
+//        Faculty faculty2 = new Faculty("FIFO", Arrays.asList(groupC));
+        Faculty faculty1 = new Faculty("FPMI");
+        Faculty faculty2 = new Faculty("FIFO");
+        faculty1.setGroups(Arrays.asList(groupA, groupB));
+        faculty2.setGroups(Arrays.asList(groupC));
         //System.out.println(groupA.getMarksForGroup("Math"));
         //System.out.println(groupB.getMarksForGroup("Math"));
         //System.out.println(faculty1.getMiddleMarksForFaculty(groupA, "Math"));
         System.out.println("Cредний балл по конкретному предмету в конкретной группе и на конкретном факультете - " + faculty2.getMiddleMarksForFaculty(groupB, "Math"));
-        University university = new University(Arrays.asList(faculty1, faculty2));
+        //University university = new University(Arrays.asList(faculty1, faculty2));
+        University university = new University();
+        university.setFaculties(Arrays.asList(faculty1, faculty2));
         System.out.println("Cредний балл по предмету для всего университета - " + university.getMiddleMarksForUniversity("Physics"));
 
     }
