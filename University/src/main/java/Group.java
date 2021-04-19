@@ -1,12 +1,9 @@
-
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.List;
 
 public class Group {
     private String nameGroup;
-    private List<Student> students;
+    private List<Student> students = new ArrayList<>();
 
     public Group(String nameGroup) {
         this.nameGroup = nameGroup;
@@ -30,9 +27,9 @@ public class Group {
 
     }
 
-    public ArrayList getMarksForGroup(String nameSubject) throws SomeExceptions{
-        if (nameGroup.isEmpty()) {
-            throw new SomeExceptions("No Students added\n");
+    public ArrayList getMarksForGroup(String nameSubject) throws SomeExceptions {
+        if (students.isEmpty()) {
+            throw new SomeExceptions("No Students added to the group" + getNameGroup());
         } else {
             ArrayList<Integer> marks = new ArrayList<>();
             for (Student student : students) {
@@ -40,10 +37,6 @@ public class Group {
             }
             return marks;
         }
-    }
-
-    public void setNameGroup(String nameGroup) {
-        this.nameGroup = nameGroup;
     }
 
     @Override

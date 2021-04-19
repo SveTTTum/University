@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Student {
 
@@ -23,9 +22,5 @@ public class Student {
         ArrayList<Integer> marks = new ArrayList<>();
         marks.addAll(diary.getMarksForSubject(nameSubject));
         return marks;
-    }
-
-    public void setNameStudent(String name) {
-        this.name = name;
     }
 }

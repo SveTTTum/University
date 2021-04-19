@@ -1,9 +1,8 @@
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 public class University {
-    private List<Faculty> faculties;
+    private List<Faculty> faculties = new ArrayList<>();
 
     public University() {
         this.faculties = faculties;
@@ -18,21 +17,21 @@ public class University {
     }
 
     float getMiddleMarksForUniversity(String nameSubject) throws SomeExceptions {
-            ArrayList<Integer> marks = new ArrayList<>();
-            for (Faculty faculty : faculties) {
-                for (Group group : faculty.getGroups()) {
-                    marks.addAll(group.getMarksForGroup(nameSubject));
-                }
-                if (faculty == null) {
-                    throw new SomeExceptions("No Faculties in University");
-                }
-            }
-            int sum = 0;
-            float counter = 0;
-            for (Integer mark : marks) {
-                sum += mark;
-                counter++;
-            }
-            return (float) sum / counter;
+        ArrayList<Integer> marks = new ArrayList<>();
+        if (faculties.isEmpty()) {
+            throw new SomeExceptions("No Faculties added to the University");
         }
+        for (Faculty faculty : faculties) {
+            for (Group group : faculty.getGroups()) {
+                marks.addAll(group.getMarksForGroup(nameSubject));
+            }
+        }
+        int sum = 0;
+        float counter = 0;
+        for (Integer mark : marks) {
+            sum += mark;
+            counter++;
+        }
+        return (float) sum / counter;
+    }
 }

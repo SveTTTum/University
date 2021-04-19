@@ -1,5 +1,4 @@
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class Diary {
     private String nameStudent;
@@ -13,36 +12,36 @@ public class Diary {
         diary.put(nameSubject, new ArrayList<>());
     }
 
-    void addSubjectMark(String nameSubject, Integer [] marks) throws SomeExceptions {
+    void addSubjectMark(String nameSubject, Integer[] marks) throws SomeExceptions {
         for (int mark : marks) {
             if (mark > 0 && mark <= 10) {
                 addSubject(nameSubject);
                 diary.get(nameSubject).addAll(Arrays.asList(marks));
             } else {
-                    throw new SomeExceptions("Incorrect mark...");
+                throw new SomeExceptions("Incorrect mark...");
             }
         }
     }
 
-     public List<Integer> getMarksForSubject(String nameSubject) {
+    public List<Integer> getMarksForSubject(String nameSubject) {
         return diary.get(nameSubject);
     }
 
     double MiddleSubjectMarks(String nameSubject) {
         int sum = 0;
         int counter = 0;
-        for(Integer mark: diary.get(nameSubject)) {
+        for (Integer mark : diary.get(nameSubject)) {
             sum += mark;
             counter++;
         }
-        return (double) sum/ counter;
+        return (double) sum / counter;
     }
 
     float MiddleMarks() {
         int sum = 0;
         float counter = 0;
-        for(String subject: diary.keySet()) {
-            for(int mark: diary.get(subject)) {
+        for (String subject : diary.keySet()) {
+            for (int mark : diary.get(subject)) {
                 sum += mark;
                 counter++;
             }
