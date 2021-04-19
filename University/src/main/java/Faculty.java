@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Faculty {
@@ -18,5 +20,17 @@ public class Faculty {
                 return groups;
         }
 
+        float getMiddleMarksForFaculty(Group group, String nameSubject) {
+                ArrayList<Integer> marks = new ArrayList<>();
+                marks.addAll(group.getMarksForGroup(nameSubject));
+
+                int sum = 0;
+                float counter = 0;
+                for(Integer mark : marks) {
+                        sum += mark;
+                        counter++;
+                }
+                return (float) sum / counter;
+        }
 
 }

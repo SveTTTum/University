@@ -1,7 +1,8 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Student {
-    //private static int id = 0;
+
     private String name;
     private final Diary diary;
 
@@ -17,4 +18,11 @@ public class Student {
     public String getName() {
         return name;
     }
+
+    public ArrayList getMarks(String nameSubject) {
+        ArrayList<Integer> marks = new ArrayList<>();
+        marks.addAll(diary.getMarksForSubject(nameSubject));
+        return marks;
+    }
+
 }

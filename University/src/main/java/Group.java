@@ -1,5 +1,6 @@
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class Group {
@@ -19,4 +20,23 @@ public class Group {
         return students;
     }
 
+    public ArrayList getMarksForGroup(String nameSubject) {
+        ArrayList<Integer> marks = new ArrayList<>();
+        for(Student student : students) {
+            marks.addAll(student.getMarks(nameSubject));
+        }
+        return marks;
+    }
+
+    public void setNameGroup(String nameGroup) {
+        this.nameGroup = nameGroup;
+    }
+
+    @Override
+    public String toString() {
+        return "Group{" +
+                "nameGroup='" + nameGroup + '\'' +
+                ", students=" + students +
+                '}';
+    }
 }
