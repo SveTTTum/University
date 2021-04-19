@@ -13,13 +13,13 @@ public class Diary {
         diary.put(nameSubject, new ArrayList<>());
     }
 
-    void addSubjectMark(String nameSubject, Integer [] marks) {
+    void addSubjectMark(String nameSubject, Integer [] marks) throws SomeExceptions {
         for (int mark : marks) {
-            if (mark > 0 & mark <= 10) {
+            if (mark > 0 && mark <= 10) {
                 addSubject(nameSubject);
                 diary.get(nameSubject).addAll(Arrays.asList(marks));
             } else {
-                    throw new IllegalArgumentException();
+                    throw new SomeExceptions("Incorrect mark...");
             }
         }
     }

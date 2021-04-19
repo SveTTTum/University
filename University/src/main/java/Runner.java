@@ -4,7 +4,7 @@ import java.lang.reflect.Array;
 import java.util.*;
 
 public class Runner {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SomeExceptions {
         Student student1 = new Student("Nike Ivanov");
         student1.getDiary().addSubjectMark("Math", new Integer[]{5, 7, 9, 7});
         student1.getDiary().addSubjectMark("Physics", new Integer[]{8, 8, 9, 8});
@@ -49,7 +49,7 @@ public class Runner {
         System.out.println("Cредний балл по конкретному предмету в конкретной группе и на конкретном факультете - " + faculty2.getMiddleMarksForFaculty(groupB, "Math"));
         //University university = new University(Arrays.asList(faculty1, faculty2));
         University university = new University();
-        university.setFaculties(Arrays.asList(faculty1, faculty2));
+        //university.setFaculties(Arrays.asList(faculty1, faculty2));
         System.out.println("Cредний балл по предмету для всего университета - " + university.getMiddleMarksForUniversity("Physics"));
 
     }

@@ -12,9 +12,13 @@ public class Group {
         this.nameGroup = nameGroup;
     }
 
+    public Group(String nameGroup, List<Student> students) {
+        this.nameGroup = nameGroup;
+        this.students = students;
+    }
+
     public String getNameGroup() {
         return nameGroup;
-
     }
 
     public List<Student> getStudents() {
@@ -26,9 +30,9 @@ public class Group {
 
     }
 
-    public ArrayList getMarksForGroup(String nameSubject) {
+    public ArrayList getMarksForGroup(String nameSubject) throws SomeExceptions{
         if (nameGroup.isEmpty()) {
-            throw new NullPointerException("No Students added\n");
+            throw new SomeExceptions("No Students added\n");
         } else {
             ArrayList<Integer> marks = new ArrayList<>();
             for (Student student : students) {

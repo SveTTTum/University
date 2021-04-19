@@ -11,6 +11,11 @@ public class Faculty {
                 this.nameFaculty = nameFaculty;
         }
 
+        public Faculty(String nameFaculty, List<Group> groups) {
+                this.nameFaculty = nameFaculty;
+                this.groups = groups;
+        }
+
         public String getNameFaculty() {
                 return nameFaculty;
         }
@@ -23,9 +28,9 @@ public class Faculty {
                 this.groups = groups;
         }
 
-        float getMiddleMarksForFaculty(Group group, String nameSubject) {
+        float getMiddleMarksForFaculty(Group group, String nameSubject) throws SomeExceptions{
                 if (nameFaculty.isEmpty()) {
-                        throw new NullPointerException("No Groups added\n");
+                        throw new SomeExceptions("No Groups added\n");
                 } else {
                         ArrayList<Integer> marks = new ArrayList<>();
                         marks.addAll(group.getMarksForGroup(nameSubject));
