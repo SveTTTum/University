@@ -25,12 +25,12 @@ public class Runner {
         student4.addSubjectAndMarks (Subjects.MATH, Arrays.asList(8, 8, 8, 8));
         student4.addSubjectAndMarks (Subjects.PHYSICS, Arrays.asList(7, 7, 6, 6));
         student4.addSubjectAndMarks (Subjects.INFORMATICS, Arrays.asList(6, 6, 5, 5));
-//        try {
+        try {
             System.out.println("Average score " + student1.getName() + " - " + student1.averageMarks());
-//        }
-//        catch (NullPointerException e) {
-//            System.out.println("Division by zero!" + student1.getName() + " has no marks at the " + e);
-//        }
+        }
+        catch (ArithmeticException e) {
+            System.err.println("Division by zero!" + student1.getName() + " has no marks at the " + e);
+        }
         //System.out.println(student1.getMarks(Subjects.INFORMATICS));
         Group groupA = new Group("A");
         Group groupB = new Group("B");
@@ -47,7 +47,16 @@ public class Runner {
         //System.out.println(faculty1.getAverageMarksForFaculty(groupA, "Math"));
         System.out.println("Cредний балл по конкретному предмету в конкретной группе и на конкретном факультете - " + faculty1.getAverageMarksForFaculty(groupB, Subjects.MATH));
         University university = new University();
-        university.setFaculties(Arrays.asList(faculty1, faculty2));
-        System.out.println("Cредний балл по предмету для всего университета - " + university.getAverageMarksForAllFaculties(Subjects.PHYSICS));
+        //university.setFaculties(Arrays.asList(faculty1, faculty2));
+        try {
+            System.out.println("Cредний балл по предмету для всего университета - " + university.getAverageMarksForAllFaculties(Subjects.PHYSICS));
+        }
+        catch (ZeroDivisionException e) {
+            throw new ZeroDivisionException("Division by zero! University has no marks in the some Subject", e);
+        }
+        catch (LackOfMarksExceptions e) {
+            System.err.println("No Faculties added to the University" + e.getCause());
+        }
+
     }
 }
