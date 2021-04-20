@@ -30,6 +30,7 @@ public class University {
         for (Faculty faculty : faculties) {
             for (Group group : faculty.getGroups()) {
                 for (Student student : group.getStudents()) {
+
                     for (int mark : student.getMarks(nameSubject)) {
                         sum += mark;
                         counter++;

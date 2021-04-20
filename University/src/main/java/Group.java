@@ -10,11 +10,12 @@ public class Group {
 
     public Group(String nameGroup) {
         this.nameGroup = nameGroup;
+        this.students = new ArrayList<>();
     }
 
     public Group(String nameGroup, List<Student> students) {
         this.nameGroup = nameGroup;
-        this.students = new ArrayList<>();
+        this.students = students;
     }
 
     public String getNameGroup() {

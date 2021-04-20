@@ -8,11 +8,12 @@ import java.util.List;
 public class Faculty {
 
     private final String nameFaculty;
-    private List<Group> groups = new ArrayList<>();
+    private List<Group> groups;
 
 
     public Faculty(String nameFaculty) {
         this.nameFaculty = nameFaculty;
+        this.groups = new ArrayList<>();
     }
 
     public Faculty(String nameFaculty, List<Group> groups) {

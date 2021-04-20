@@ -7,9 +7,12 @@ import java.util.Arrays;
 public class Runner {
     public static void main(String[] args) throws SomeExceptions, ZeroDivisionException, LackOfMarksExceptions {
         Student student1 = new Student("Nike Ivanov");
-        student1.addSubjectAndMarks (Subjects.MATH, Arrays.asList(5, 7, 9, 7));
-        student1.addSubjectAndMarks (Subjects.PHYSICS, Arrays.asList(8, 8, 9, 8));
-        student1.addSubjectAndMarks (Subjects.INFORMATICS, Arrays.asList(6, 8, 7, 8));
+        student1.addSubjectAndMarks (Subjects.MATH, Arrays.asList());
+//5, 7, 9, 7
+        student1.addSubjectAndMarks (Subjects.PHYSICS, Arrays.asList());
+//8, 8, 9, 8
+        student1.addSubjectAndMarks (Subjects.INFORMATICS, Arrays.asList());
+//6, 8, 7, 8
         Student student2 = new Student("Mike Vazovsky");
         student2.addSubjectAndMarks (Subjects.MATH, Arrays.asList(5, 7, 9, 7));
         student2.addSubjectAndMarks (Subjects.PHYSICS, Arrays.asList(4, 6, 9, 7));
@@ -22,8 +25,13 @@ public class Runner {
         student4.addSubjectAndMarks (Subjects.MATH, Arrays.asList(8, 8, 8, 8));
         student4.addSubjectAndMarks (Subjects.PHYSICS, Arrays.asList(7, 7, 6, 6));
         student4.addSubjectAndMarks (Subjects.INFORMATICS, Arrays.asList(6, 6, 5, 5));
-        System.out.println("Average score " + student1.getName() + " - " + student1.averageMarks());
-        //System.out.println(student2.getMarks("Informatics"));
+        try {
+            System.out.println("Average score " + student1.getName() + " - " + student1.averageMarks());
+        }
+        catch (NullPointerException e) {
+            System.out.println("Division by zero!" + student1.getName() + " has no marks at the " + e);
+        }
+        //System.out.println(student1.getMarks(Subjects.INFORMATICS));
         Group groupA = new Group("A");
         Group groupB = new Group("B");
         Group groupC = new Group("C");
