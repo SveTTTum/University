@@ -1,29 +1,28 @@
+import Exceptions.LackOfMarksExceptions;
+import Exceptions.SomeExceptions;
+import Exceptions.ZeroDivisionException;
+
 import java.util.Arrays;
 
 public class Runner {
-    public static void main(String[] args) throws SomeExceptions {
+    public static void main(String[] args) throws SomeExceptions, ZeroDivisionException, LackOfMarksExceptions {
         Student student1 = new Student("Nike Ivanov");
-        student1.getDiary().addSubjectMark("Math", new Integer[]{5, 7, 9, 7});
-        student1.getDiary().addSubjectMark("Physics", new Integer[]{8, 8, 9, 8});
-        student1.getDiary().addSubjectMark("Informatics", new Integer[]{6, 8, 7, 8});
+        student1.addSubjectAndMarks (Subjects.MATH, Arrays.asList(5, 7, 9, 7));
+        student1.addSubjectAndMarks (Subjects.PHYSICS, Arrays.asList(8, 8, 9, 8));
+        student1.addSubjectAndMarks (Subjects.INFORMATICS, Arrays.asList(6, 8, 7, 8));
         Student student2 = new Student("Mike Vazovsky");
-        student2.getDiary().addSubjectMark("Math", new Integer[]{5, 7, 9, 7});
-        student2.getDiary().addSubjectMark("Physics", new Integer[]{4, 6, 9, 7});
-        student2.getDiary().addSubjectMark("Informatics", new Integer[]{5, 8, 7, 6});
+        student2.addSubjectAndMarks (Subjects.MATH, Arrays.asList(5, 7, 9, 7));
+        student2.addSubjectAndMarks (Subjects.PHYSICS, Arrays.asList(4, 6, 9, 7));
+        student2.addSubjectAndMarks (Subjects.INFORMATICS, Arrays.asList(5, 8, 7, 6));
         Student student3 = new Student("Nina Pushkina");
-        student3.getDiary().addSubjectMark("Math", new Integer[]{8, 8, 9, 9});
-        student3.getDiary().addSubjectMark("Physics", new Integer[]{4, 5, 6, 7});
-        student3.getDiary().addSubjectMark("Informatics", new Integer[]{7, 6, 6, 6});
+        student3.addSubjectAndMarks (Subjects.MATH, Arrays.asList(8, 8, 9, 9));
+        student3.addSubjectAndMarks (Subjects.PHYSICS, Arrays.asList(4, 5, 6, 7));
+        student3.addSubjectAndMarks (Subjects.INFORMATICS, Arrays.asList(7, 6, 6, 6));
         Student student4 = new Student("Ivan Kotov");
-        student4.getDiary().addSubjectMark("Math", new Integer[]{8, 8, 8, 8});
-        student4.getDiary().addSubjectMark("Physics", new Integer[]{7, 7, 6, 6});
-        student4.getDiary().addSubjectMark("Informatics", new Integer[]{6, 6, 5, 5});
-        System.out.println(student1.getDiary());
-        System.out.println(student2.getDiary());
-        System.out.println(student3.getDiary());
-        System.out.println(student4.getDiary());
-        System.out.println("Average score " + student1.getName() + " - " + student1.getDiary().MiddleMarks());
-        //System.out.println("Average score at Math" + student2.getName() + " - " + student2.getDiary().MiddleSubjectMarks("Math"));
+        student4.addSubjectAndMarks (Subjects.MATH, Arrays.asList(8, 8, 8, 8));
+        student4.addSubjectAndMarks (Subjects.PHYSICS, Arrays.asList(7, 7, 6, 6));
+        student4.addSubjectAndMarks (Subjects.INFORMATICS, Arrays.asList(6, 6, 5, 5));
+        System.out.println("Average score " + student1.getName() + " - " + student1.averageMarks());
         //System.out.println(student2.getMarks("Informatics"));
         Group groupA = new Group("A");
         Group groupB = new Group("B");
@@ -37,10 +36,10 @@ public class Runner {
         faculty2.setGroups(Arrays.asList(groupC));
         //System.out.println(groupA.getMarksForGroup("Math"));
         //System.out.println(groupB.getMarksForGroup("Math"));
-        //System.out.println(faculty1.getMiddleMarksForFaculty(groupA, "Math"));
-        System.out.println("Cредний балл по конкретному предмету в конкретной группе и на конкретном факультете - " + faculty1.getMiddleMarksForFaculty(groupB, "Math"));
+        //System.out.println(faculty1.getAverageMarksForFaculty(groupA, "Math"));
+        System.out.println("Cредний балл по конкретному предмету в конкретной группе и на конкретном факультете - " + faculty1.getAverageMarksForFaculty(groupB, Subjects.MATH));
         University university = new University();
         university.setFaculties(Arrays.asList(faculty1, faculty2));
-        System.out.println("Cредний балл по предмету для всего университета - " + university.getMiddleMarksForUniversity("Physics"));
+        System.out.println("Cредний балл по предмету для всего университета - " + university.getAverageMarksForAllFaculties(Subjects.PHYSICS));
     }
 }

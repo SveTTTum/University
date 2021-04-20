@@ -1,9 +1,13 @@
+import Exceptions.LackOfMarksExceptions;
+import Exceptions.SomeExceptions;
+import Exceptions.ZeroDivisionException;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Faculty {
 
-    private String nameFaculty;
+    private final String nameFaculty;
     private List<Group> groups = new ArrayList<>();
 
 
@@ -28,7 +32,7 @@ public class Faculty {
         this.groups = groups;
     }
 
-    float getMiddleMarksForFaculty(Group group, String nameSubject) throws SomeExceptions {
+    float getAverageMarksForFaculty(Group group, Subjects nameSubject) throws SomeExceptions, ZeroDivisionException, LackOfMarksExceptions {
         if (groups.isEmpty()) {
             throw new SomeExceptions("No Groups added to the faculty" + getNameFaculty());
         } else {
@@ -40,6 +44,9 @@ public class Faculty {
             for (Integer mark : marks) {
                 sum += mark;
                 counter++;
+            }
+            if (counter == 0) {
+                throw new ZeroDivisionException("Division by zero! No marks at the " + group + "in the "+ nameSubject);
             }
             return (float) sum / counter;
         }
