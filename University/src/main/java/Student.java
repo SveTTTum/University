@@ -27,11 +27,11 @@ public class Student {
         }
         diary.put(subject, marks);
 
-//        for (int mark : marks) {
-//            if (mark <= 0 || mark > 10) {
-//                throw new SomeExceptions("Incorrect mark in " + subject + " of " + name + " , the mark must not be <= 0 or > 10");
-//            }
-//        }
+        for (int mark : marks) {
+            if (mark <= 0 || mark > 10) {
+                throw new SomeExceptions("Incorrect mark in " + subject + " of " + name + " , the mark must not be <= 0 or > 10");
+            }
+        }
     }
 
     public String getName() {
@@ -55,6 +55,8 @@ public class Student {
                     sum += mark;
                     counter++;
                 }
+            } else if (diary.isEmpty()) {
+                throw new SomeExceptions("not marks in diary of " + getName());
             }
             else throw new SomeExceptions(subject + " is not in diary of " + getName());
         }
