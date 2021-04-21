@@ -1,6 +1,6 @@
-import Exceptions.LackOfMarksExceptions;
-import Exceptions.SomeExceptions;
-import Exceptions.ZeroDivisionException;
+import exceptions.EmptyFacultyException;
+import exceptions.LackOfMarksExceptions;
+import exceptions.SomeExceptions;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,9 +20,9 @@ public class University {
         this.faculties = faculties;
     }
 
-    float getAverageMarksForAllFaculties (Subjects nameSubject) throws SomeExceptions, ZeroDivisionException {
+    float getAverageMarksForAllFaculties (Subjects nameSubject) throws SomeExceptions, LackOfMarksExceptions, EmptyFacultyException {
         if (faculties.isEmpty()) {
-            throw new SomeExceptions("No Faculties added to the University");
+            throw new EmptyFacultyException("No Faculties added to the University");
         }
         int sum = 0;
         float counter = 0;
@@ -39,7 +39,7 @@ public class University {
             }
         }
         if (counter == 0) {
-            throw new ZeroDivisionException("Division by zero! " + faculties + " has no marks in the " + nameSubject);
+            throw new LackOfMarksExceptions("Division by zero! " + faculties + " has no marks in the " + nameSubject);
         }
         return (float) sum / counter;
     }

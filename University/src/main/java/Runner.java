@@ -1,18 +1,14 @@
-import Exceptions.LackOfMarksExceptions;
-import Exceptions.SomeExceptions;
-import Exceptions.ZeroDivisionException;
+
+import exceptions.*;
 
 import java.util.Arrays;
 
 public class Runner {
-    public static void main(String[] args) throws SomeExceptions, ZeroDivisionException, LackOfMarksExceptions {
+    public static void main(String[] args) throws SomeExceptions, ZeroDivisionException, LackOfMarksExceptions, EmptyGroupException, EmptyFacultyException {
         Student student1 = new Student("Nike Ivanov");
         student1.addSubjectAndMarks (Subjects.MATH, Arrays.asList(5, 7, 9, 7));
-//5, 7, 9, 7
         student1.addSubjectAndMarks (Subjects.PHYSICS, Arrays.asList(8, 8, 9, 8));
-//8, 8, 9, 8
         student1.addSubjectAndMarks (Subjects.INFORMATICS, Arrays.asList(6, 8, 7, 8));
-//6, 8, 7, 8
         Student student2 = new Student("Mike Vazovsky");
         student2.addSubjectAndMarks (Subjects.MATH, Arrays.asList(5, 7, 9, 7));
         student2.addSubjectAndMarks (Subjects.PHYSICS, Arrays.asList(4, 6, 9, 7));
@@ -26,12 +22,12 @@ public class Runner {
         student4.addSubjectAndMarks (Subjects.PHYSICS, Arrays.asList(7, 7, 6, 6));
         student4.addSubjectAndMarks (Subjects.INFORMATICS, Arrays.asList(6, 6, 5, 5));
         try {
-            System.out.println("Average score " + student1.getName() + " - " + student1.averageMarks());
+            System.out.println("Average score " + student1.getName() + " - " + student1.calculateAverageMarks());
         }
         catch (ArithmeticException e) {
             System.err.println("Division by zero!" + student1.getName() + " has no marks at the " + e);
         }
-        //System.out.println(student1.getMarks(Subjects.INFORMATICS));
+        System.out.println(student1.getMarks(Subjects.INFORMATICS));
         Group groupA = new Group("A");
         Group groupB = new Group("B");
         Group groupC = new Group("C");
@@ -44,9 +40,9 @@ public class Runner {
         Faculty faculty2 = new Faculty("FIFO");
         faculty1.setGroups(Arrays.asList(groupA, groupB));
         faculty2.setGroups(Arrays.asList(groupC));
-        //System.out.println(groupA.getMarksForGroup(Subjects.MATH));
-        //System.out.println(groupB.getMarksForGroup(Subjects.MATH));
-        //System.out.println(faculty1.getAverageMarksForFaculty(groupA, Subjects.MATH));
+        System.out.println(groupA.getMarksForGroup(Subjects.MATH));
+        System.out.println(groupB.getMarksForGroup(Subjects.MATH));
+        System.out.println(faculty1.getAverageMarksForFaculty(groupA, Subjects.MATH));
         try {
             System.out.println("Cредний балл по конкретному предмету в конкретной группе и на конкретном факультете - " + faculty1.getAverageMarksForFaculty(groupB, Subjects.MATH));
         }
@@ -58,12 +54,8 @@ public class Runner {
         try {
             System.out.println("Cредний балл по предмету для всего университета - " + university.getAverageMarksForAllFaculties(Subjects.PHYSICS));
         }
-        catch (ZeroDivisionException e) {
+        catch (LackOfMarksExceptions | EmptyFacultyException e) {
             System.err.println(e);
         }
-        catch (SomeExceptions e) {
-            System.err.println("No Faculties added to the University" + e.getMessage());
-        }
-
     }
 }

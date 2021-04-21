@@ -1,4 +1,4 @@
-package Exceptions;
+package exceptions;
 
 public class LackOfMarksExceptions extends Exception{
     public LackOfMarksExceptions() {

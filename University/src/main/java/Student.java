@@ -1,6 +1,6 @@
 
-import Exceptions.SomeExceptions;
-import Exceptions.ZeroDivisionException;
+import exceptions.SomeExceptions;
+import exceptions.ZeroDivisionException;
 import java.util.*;
 
 
@@ -14,22 +14,13 @@ public class Student {
         this.diary = new HashMap<>();
     }
 
-    public Student(String name, Map<Subjects, List<Integer>> diary) {
-        this.name = name;
-        this.diary = diary;
-    }
-
     void addSubjectAndMarks (Subjects subject, List <Integer> marks) throws SomeExceptions {
-        if (diary.containsKey(subject)) {
-            marks.addAll(diary.get(subject));
-        }
-        diary.put(subject, marks);
-
         for (int mark : marks) {
             if (mark <= 0 || mark > 10) {
                 throw new SomeExceptions("Incorrect mark in " + subject + " of " + name + " , the mark must not be <= 0 or > 10");
             }
         }
+        diary.putIfAbsent(subject, marks);
     }
 
     public String getName() {
@@ -44,7 +35,7 @@ public class Student {
         return getMarksForSubject(subject);
     }
 
-    float averageMarks() throws ZeroDivisionException, SomeExceptions {
+    float calculateAverageMarks() throws ZeroDivisionException, SomeExceptions {
         int sum = 0;
         float counter = 0;
         for (Subjects subject : Subjects.values() ) {
@@ -53,10 +44,9 @@ public class Student {
                     sum += mark;
                     counter++;
                 }
-            } else if (diary.isEmpty()) {
-                throw new SomeExceptions("not marks in diary of " + getName());
             }
-            else throw new SomeExceptions(subject + " is not in diary of " + getName());
+            else
+                throw new SomeExceptions(subject + " is not in diary of " + getName());
         }
         if (counter == 0) {
             throw new ZeroDivisionException("Division by zero!" + getName() + " has no marks at the " + diary.keySet());

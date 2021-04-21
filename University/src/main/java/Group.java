@@ -1,5 +1,4 @@
-import Exceptions.LackOfMarksExceptions;
-import Exceptions.SomeExceptions;
+import exceptions.EmptyGroupException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,9 +30,9 @@ public class Group {
 
     }
 
-    public List<Integer> getMarksForGroup(Subjects nameSubject) throws SomeExceptions {
+    public List<Integer> getMarksForGroup(Subjects nameSubject) throws EmptyGroupException {
         if (students.isEmpty()) {
-            throw new SomeExceptions("No Students added to the group " + getNameGroup());
+            throw new EmptyGroupException("No Students added to the group " + getNameGroup());
         }
         ArrayList<Integer> marks = new ArrayList<>();
         for (Student student : students) {

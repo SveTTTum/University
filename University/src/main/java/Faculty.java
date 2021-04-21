@@ -1,6 +1,7 @@
-import Exceptions.LackOfMarksExceptions;
-import Exceptions.SomeExceptions;
-import Exceptions.ZeroDivisionException;
+import exceptions.EmptyGroupException;
+import exceptions.LackOfMarksExceptions;
+import exceptions.SomeExceptions;
+import exceptions.ZeroDivisionException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +34,7 @@ public class Faculty {
         this.groups = groups;
     }
 
-    float getAverageMarksForFaculty(Group group, Subjects nameSubject) throws SomeExceptions, ZeroDivisionException, LackOfMarksExceptions {
+    float getAverageMarksForFaculty(Group group, Subjects nameSubject) throws SomeExceptions, ZeroDivisionException, LackOfMarksExceptions, EmptyGroupException {
         if (groups.isEmpty()) {
             throw new SomeExceptions("No Groups added to the faculty" + getNameFaculty());
         } else {
