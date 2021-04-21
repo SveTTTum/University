@@ -20,10 +20,10 @@ public class University {
         this.faculties = faculties;
     }
 
-    float getAverageMarksForAllFaculties (Subjects nameSubject) throws SomeExceptions, ZeroDivisionException, LackOfMarksExceptions {
-//        if (faculties.isEmpty()) {
-//            throw new SomeExceptions("No Faculties added to the University");
-//        }
+    float getAverageMarksForAllFaculties (Subjects nameSubject) throws SomeExceptions, ZeroDivisionException {
+        if (faculties.isEmpty()) {
+            throw new SomeExceptions("No Faculties added to the University");
+        }
         int sum = 0;
         float counter = 0;
 
@@ -38,9 +38,9 @@ public class University {
                 }
             }
         }
-//        if (counter == 0) {
-//            throw new ZeroDivisionException("Division by zero! " + faculties + " has no marks in the " + nameSubject);
-//        }
+        if (counter == 0) {
+            throw new ZeroDivisionException("Division by zero! " + faculties + " has no marks in the " + nameSubject);
+        }
         return (float) sum / counter;
     }
 }

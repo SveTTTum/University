@@ -1,8 +1,6 @@
-import Exceptions.LackOfMarksExceptions;
+
 import Exceptions.SomeExceptions;
 import Exceptions.ZeroDivisionException;
-
-import java.util.ArrayList;
 import java.util.*;
 
 
@@ -60,9 +58,9 @@ public class Student {
             }
             else throw new SomeExceptions(subject + " is not in diary of " + getName());
         }
-//        if (counter == 0) {
-//            throw new ZeroDivisionException("Division by zero!" + getName() + " has no marks at the " + diary.keySet());
-//        }
+        if (counter == 0) {
+            throw new ZeroDivisionException("Division by zero!" + getName() + " has no marks at the " + diary.keySet());
+        }
         return sum / counter;
     }
 

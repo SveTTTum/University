@@ -16,4 +16,5 @@ public class SomeExceptions extends Exception {
     public SomeExceptions(Throwable exception) {
         super(exception);
     }
+
 }

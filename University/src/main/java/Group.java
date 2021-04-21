@@ -31,7 +31,7 @@ public class Group {
 
     }
 
-    public List<Integer> getMarksForGroup(Subjects nameSubject) throws SomeExceptions, LackOfMarksExceptions {
+    public List<Integer> getMarksForGroup(Subjects nameSubject) throws SomeExceptions {
         if (students.isEmpty()) {
             throw new SomeExceptions("No Students added to the group " + getNameGroup());
         }
