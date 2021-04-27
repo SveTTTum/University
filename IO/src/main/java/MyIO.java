@@ -27,7 +27,6 @@ public class MyIO {
             System.out.println("My directory - " + element);
             File dir = new File(element);
             List<String> stringList = getFilesRecurse(dir);
-
             try (FileWriter writer = new FileWriter(file, true)) {
                 writer.write(dir.getName());
                 writer.append('\n');
@@ -39,16 +38,10 @@ public class MyIO {
                 e.printStackTrace();
             }
         }
-        FileReader reader = null;
-        try {
-            reader = new FileReader(file);
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-            List<String> listOfData = new BufferedReader(reader).lines().collect(Collectors.toList());
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(file))) {
+            List<String> listOfData = new ArrayList<>();
+            listOfData = bufferedReader.lines().collect(Collectors.toList());
             listOfData.forEach(System.out::println);
-
             int counterFile = 0;
             int counterDir = 0;
             int sumLengthFiles = 0;
@@ -61,16 +54,20 @@ public class MyIO {
                     sumLengthFiles += line.length();
                 }
             }
-        if (counterFile == 0) {
-            throw new ArithmeticException("No files in this directory");
+            if (counterFile == 0) {
+                throw new ArithmeticException("No files in this directory");
+            }
+            if (counterDir == 0) {
+                throw new ArithmeticException("No folders in this directory");
+            }
+            int middleLengthFile = sumLengthFiles / counterFile;
+            int middleQuantityFiles = counterFile / counterDir;
+
+            System.out.println("Quantity of folders " + counterDir + "\n" + "Quantity of files " + counterFile);
+            System.out.println("Middle length name of file " + middleLengthFile);
+            System.out.println("Middle quantity of files in directory " + middleQuantityFiles);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        if (counterDir == 0) {
-            throw new ArithmeticException("No folders in this directory");
-        }
-        int middleLengthFile = sumLengthFiles / counterFile;
-        int middleQuantityFiles = counterFile / counterDir;
-        System.out.println("Quantity of folders " + counterDir + "\n" + "Quantity of files " + counterFile);
-        System.out.println("Middle length name of file " + middleLengthFile);
-        System.out.println("Middle quantity of files in directory " + middleQuantityFiles);
     }
 }
