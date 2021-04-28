@@ -11,7 +11,6 @@ public class Faculty {
     private final String nameFaculty;
     private List<Group> groups;
 
-
     public Faculty(String nameFaculty) {
         this.nameFaculty = nameFaculty;
         this.groups = new ArrayList<>();
@@ -37,20 +36,17 @@ public class Faculty {
     float getAverageMarksForFaculty(Group group, Subjects nameSubject) throws SomeExceptions, ZeroDivisionException, LackOfMarksExceptions, EmptyGroupException {
         if (groups.isEmpty()) {
             throw new SomeExceptions("No Groups added to the faculty" + getNameFaculty());
-        } else {
-            ArrayList<Integer> marks = new ArrayList<>();
-            marks.addAll(group.getMarksForGroup(nameSubject));
-
-            int sum = 0;
-            float counter = 0;
-            for (Integer mark : marks) {
-                sum += mark;
-                counter++;
-            }
-            if (counter == 0) {
-                throw new ZeroDivisionException("Division by zero! No marks at the " + group + "in the "+ nameSubject);
-            }
-            return (float) sum / counter;
         }
+        List<Integer> marks = group.getMarksForGroup(nameSubject);
+        int sum = 0;
+        float counter = 0;
+        for (Integer mark : marks) {
+            sum += mark;
+            counter++;
+        }
+        if (counter == 0) {
+            throw new ZeroDivisionException("Division by zero! No marks at the " + group + "in the " + nameSubject);
+        }
+        return (float) sum / counter;
     }
 }

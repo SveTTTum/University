@@ -38,7 +38,7 @@ public class Student {
     float calculateAverageMarks() throws ZeroDivisionException, SomeExceptions {
         int sum = 0;
         float counter = 0;
-        for (Subjects subject : Subjects.values() ) {
+        for (Subjects subject : diary.keySet() ) {
             if (diary.containsKey(subject)) {
                 for (int mark : diary.get(subject)) {
                     sum += mark;
