@@ -14,14 +14,14 @@ public class Car extends Thread {
     public void run() {
         try {
             if (semaphore.availablePermits() == 0) {
-                System.out.println("Машина " + id + " ожидает свободное место на парковке");
+                System.out.println("Car " + id + " waiting for a free parking space");
                 TimeUnit.SECONDS.sleep(20);
-                System.out.println("Машина " + id + " уехала на другую парковку");
+                System.out.println("Car " + id + " left for another parking lot");
             } else {
                 semaphore.acquire();
-                System.out.println("Машина " + id + " заезжает на машиноместо");
+                System.out.println("Car " + id + " pulls into a parking space");
                 TimeUnit.SECONDS.sleep(30);
-                System.out.println("Машина " + id + " освобождает машиноместо");
+                System.out.println("Car " + id + " frees up parking space");
                 semaphore.release();
             }
         } catch (InterruptedException e) {
